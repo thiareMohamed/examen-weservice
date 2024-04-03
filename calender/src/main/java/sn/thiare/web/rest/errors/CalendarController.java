@@ -1,4 +1,4 @@
-package sn.thiare.web.rest;
+package sn.thiare.web.rest.errors;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,11 +10,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/services/calendar")
+@RequestMapping("/calendar")
 public class CalendarController {
 
-    @PostMapping("/dayfinder/{date}")
-    public ResponseEntity<Map<String, String>> getDay(@PathVariable("date") String date) {
+    @PostMapping("/dayfinder")
+    public ResponseEntity<Map<String, String>> getDay(@RequestBody String date) {
+
+        System.out.println("=====================");
+        System.out.println("date: "+ date);
 
         Map<String, String> response = new HashMap<>();
         response.put("date", date);
